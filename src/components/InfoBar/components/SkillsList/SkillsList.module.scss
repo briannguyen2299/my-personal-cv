@@ -1,0 +1,38 @@
+.skill-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  li {
+    width: 100%;
+    margin: 4px 0;
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span:first-child {
+    color: var(--text-color-3);
+  }
+}
+
+.skill-bar {
+  width: 100%;
+}
+
+.skillbar-container {
+  background-color: transparent;
+  border: 1px solid var(--color-foreground);
+  padding: 2px;
+}
+
+.skillbar-progress {
+  height: 12px;
+  background-color: var(--text-color-2);
+  border-radius: 0 2px 2px 0;
+}

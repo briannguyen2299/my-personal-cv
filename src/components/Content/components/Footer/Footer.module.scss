@@ -1,0 +1,21 @@
+.footer-container {
+  width: 100%;
+  padding: 15px 30px;
+  margin-top: 30px;
+}
+
+.subcontainer {
+  width: 100%;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  background: var(--background-color-gradient-2);
+  font-size: 14px;
+  line-height: 2;
+}
+
+@media screen and (max-width: 600px) {
+  .subcontainer {
+    flex-direction: column;
+  }
+}

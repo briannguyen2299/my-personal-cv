@@ -1,0 +1,23 @@
+.content-container {
+  width: calc(100% - 30px);
+  height: calc(100vh - 30px);
+  padding-left: 290px;
+  padding-right: 80px;
+  overflow: hidden auto;
+  position: absolute;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.sub-container {
+  position: relative;
+}
+
+@media screen and (max-width: 992px) {
+  .content-container {
+    width: 100vw;
+    height: calc(100vh - 70px);
+    top: 70px;
+    padding-inline: 0;
+  }
+}

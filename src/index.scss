@@ -1,0 +1,110 @@
+@import "normalize.css";
+@import "./reset.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dark-theme {
+  --color-foreground: rgb(255, 255, 255);
+  --color-background: rgb(0, 0, 0);
+
+  --text-color-1: rgb(140, 140, 142);
+  --text-color-2: rgb(255, 193, 7);
+  --text-color-3: rgb(249, 249, 251);
+
+  --background-color-1: rgb(25, 25, 35);
+  --background-color-2: rgba(25, 25, 35, 0.6);
+  --background-color-3: rgb(32, 32, 42);
+
+  --background-color-gradient-1: linear-gradient(
+    159deg,
+    rgba(37, 37, 50, 0.98) 0%,
+    rgba(35, 35, 45, 0.98) 100%
+  );
+  --background-color-gradient-2: linear-gradient(
+    159deg,
+    rgb(45, 45, 58) 0%,
+    rgb(43, 43, 53) 100%
+  );
+  --background-color-gradient-3: linear-gradient(
+    159deg,
+    rgb(37, 37, 50) 0%,
+    rgb(35, 35, 45) 100%
+  );
+
+  --box-shadow-1: 0 1px 4px 0 rgba(15, 15, 20, 0.1);
+  --box-shadow-2: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+
+  --text-shadow-1: 0 0 3px rgba(250, 250, 252, 0.4);
+
+  --border-color-1: rgba(140, 140, 142, 0.5);
+}
+
+.light-theme {
+  --color-foreground: rgb(0, 0, 0);
+  --color-background: rgb(255, 255, 255);
+
+  --text-color-1: rgb(92, 92, 111);
+  --text-color-2: rgb(244, 98, 88);
+  --text-color-3: rgb(30, 30, 40);
+
+  --background-color-1: rgb(224, 224, 230);
+  --background-color-2: rgba(224, 224, 230, 0.3);
+  --background-color-3: rgb(244, 244, 246);
+
+  --background-color-gradient-1: linear-gradient(
+    159deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  --background-color-gradient-2: linear-gradient(
+    159deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  --background-color-gradient-3: linear-gradient(
+    159deg,
+    rgb(255, 255, 255) 0%,
+    rgb(255, 255, 255) 100%
+  );
+
+  --box-shadow-1: 0 1px 4px 0 rgba(15, 15, 20, 0.1);
+  --box-shadow-2: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+
+  --text-shadow-1: 0 0 3px rgba(250, 250, 252, 0.4);
+
+  --border-color-1: rgba(140, 140, 142, 0.5);
+}
+
+body {
+  --font-family-sans-serif: "Open Sans", sans-serif;
+  --font-family-monospace: "Courier Prime", monospace;
+
+  --transition-1: 0.55s ease-in-out;
+  --transition-2: 0.4s ease-in-out;
+  --transition-3: 0.2s ease-in-out;
+
+  font-family: var(--font-family-sans-serif);
+  font-size: 13px;
+  line-height: 1.5;
+  background-color: var(--background-color-1);
+  color: var(--text-color-1);
+  text-rendering: optimizeSpeed;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: inherit;
+  transition: color var(--transition-3), text-shadow var(--transition-3);
+
+  &:hover {
+    color: var(--text-color-3);
+    text-shadow: var(--text-shadow-1);
+  }
+}

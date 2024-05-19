@@ -1,0 +1,17 @@
+.top-bar {
+  display: none;
+  background: var(--background-color-3);
+  box-shadow: var(--box-shadow-1);
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+@media screen and (max-width: 992px) {
+  .top-bar {
+    display: block;
+  }
+}
