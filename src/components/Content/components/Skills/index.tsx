@@ -8,6 +8,7 @@ import "slick-carousel/slick/slick-theme.scss";
 
 import Section from "../Section";
 import styles from "./Skills.module.scss";
+import "./carousel-remake.scss";
 import { skillsDetail } from "../../../../assets/data";
 
 const cx = classNames.bind(styles);

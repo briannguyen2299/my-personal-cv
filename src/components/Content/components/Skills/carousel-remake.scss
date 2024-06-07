@@ -1,0 +1,38 @@
+$slick-dot-color: var(--color-foreground) !default;
+$slick-dot-color-active: var(--text-color-2) !default;
+$slick-arrow-color: var(--color-foreground) !default;
+
+.slick-prev,
+.slick-next {
+  &:before {
+    color: $slick-arrow-color;
+  }
+}
+
+.slick-prev {
+  left: -30px;
+  [dir="rtl"] & {
+    right: -30px;
+  }
+}
+
+.slick-next {
+  right: -30px;
+  [dir="rtl"] & {
+    left: -30px;
+  }
+}
+
+.slick-dots {
+  bottom: -50px;
+  li {
+    button {
+      &:before {
+        color: $slick-dot-color;
+      }
+    }
+    &.slick-active button:before {
+      color: $slick-dot-color-active;
+    }
+  }
+}

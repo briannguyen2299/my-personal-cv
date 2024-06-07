@@ -1,3 +1,4 @@
+import { createContext } from "react";
 import classNames from "classnames/bind";
 
 import InfoBar from "./components/InfoBar";
@@ -8,13 +9,17 @@ import styles from "./App.module.scss";
 
 const cx = classNames.bind(styles);
 
+const ThemeContext = createContext(null);
+
 function App() {
   return (
     <div className={cx("app-container")}>
-      <TopBar />
-      <InfoBar />
-      <MenuBar />
-      <Content />
+      <ThemeContext.Provider value="dark">
+        <TopBar />
+        <InfoBar />
+        <MenuBar />
+        <Content />
+      </ThemeContext.Provider>
     </div>
   );
 }

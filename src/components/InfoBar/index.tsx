@@ -137,7 +137,10 @@ function InfoBar() {
           </Section>
 
           <div className={cx("download-cv")}>
-            <a href="https://vietcv.io/my-personal-cv" target="_blank">
+            <a
+              href="https://vietcv.io/nguyenhuutrong-cv-vietnamese"
+              target="_blank"
+            >
               DOWNLOAD CV
               <FontAwesomeIcon
                 icon={faDownload}
