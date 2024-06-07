@@ -1,14 +1,15 @@
-import { useState, useLayoutEffect, useEffect } from "react";
+import { useContext, useLayoutEffect, useEffect } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-
 import styles from "./MenuBar.module.scss";
+import { ThemeContext } from "../../context/ThemeContext";
+
 const cx = classNames.bind(styles);
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState("dark");
+  const { theme, setTheme }: any = useContext(ThemeContext);
   const [effectTitle, ctrlTitle] = useSpring(() => ({}));
   const [effectIcon, ctrlIcon] = useSpring(() => ({}));
 
