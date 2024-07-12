@@ -1,0 +1,36 @@
+.change-btn {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  &:hover {
+    color: var(--text-color-3);
+    text-shadow: var(--text-shadow-1);
+    transition: var(--transition-1);
+  }
+
+  .language-text {
+    margin-right: 10px;
+  }
+  .language-icon {
+    height: 22px;
+    display: flex;
+    font-size: 22px;
+  }
+}
+
+.select-list {
+  width: 100%;
+  padding: 8px 30px;
+
+  .select-item {
+    padding-block: 4px;
+    padding-left: 15px;
+    &:hover {
+      color: var(--text-color-3);
+      text-shadow: var(--text-shadow-1);
+      background-color: var(--background-color-1);
+      transition: var(--transition-1);
+    }
+  }
+}

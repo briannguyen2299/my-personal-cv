@@ -54,7 +54,7 @@ function Skills() {
     ],
   };
   return (
-    <Section title="Kỹ năng" icon={faCode} id="skills">
+    <Section title="@SKILLS" icon={faCode} id="skills">
       <div className={cx("slider-container")}>
         <Slider {...settings}>
           {skillsDetail.map((skill) => (

@@ -20,6 +20,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import classNames from "classnames/bind";
 import { v4 as uuidv4 } from "uuid";
+import { useTranslation } from "react-i18next";
 
 import Section from "./components/Section";
 import { personalInfo, skills, tools } from "../../assets/data/index";
@@ -32,6 +33,7 @@ const cx = classNames.bind(styles);
 function InfoBar() {
   const [show, setShow] = useState(false);
   const refBar = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation("infoBar");
 
   const personalInfoItems = [
     {
@@ -79,38 +81,38 @@ function InfoBar() {
           <div className={cx("avatar-container")}>
             <img src={avatar} />
           </div>
-          <h5 className={cx("name")}>{personalInfo.name}</h5>
+          <h5 className={cx("name")}>{t(personalInfo.name, "@FULL_NAME")}</h5>
           <div className={cx("description")}>
-            <p>{personalInfo.job}</p>
+            <p>{t(personalInfo.job, "@JOB")}</p>
           </div>
         </header>
 
         <div className={cx("scroll-bar")}>
-          <Section title="THÔNG TIN CÁ NHÂN" className={cx("personal-info")}>
+          <Section
+            title={t("@PERSONAL_INFORMATION")}
+            className={cx("personal-info")}
+          >
             <ul>
               {personalInfoItems.map((item) => (
                 <li key={uuidv4()}>
                   <div className={cx("info-item-icon")}>{item.icon}</div>
-                  <span>{item.title}</span>
+                  <span>{t(item.title, item.title)}</span>
                 </li>
               ))}
             </ul>
           </Section>
 
-          <Section
-            title="MỤC TIÊU NGHỀ NGHIỆP"
-            className={cx("objective-career")}
-          >
+          <Section title={t("@OBJECTIVES")} className={cx("objective-career")}>
             {personalInfo.objective.map((objective) => (
               <div key={uuidv4()} className={cx("objective-group")}>
-                <h2>{objective.type}</h2>
+                <h2>{t(objective.type, objective.type)}</h2>
                 <ul>
                   {objective.content.map((item) => (
                     <li key={uuidv4()}>
                       <div className={cx("target-icon")}>
                         <TargetIcon />
                       </div>
-                      <span>{item}</span>
+                      <span>{t(item, item)}</span>
                     </li>
                   ))}
                 </ul>
@@ -118,11 +120,11 @@ function InfoBar() {
             ))}
           </Section>
 
-          <Section title="KỸ NĂNG" className={cx("skills-container")}>
+          <Section title={t("@SKILLS")} className={cx("skills-container")}>
             <SkillsList data={skills} />
           </Section>
 
-          <Section title="CÔNG CỤ" className={cx("tools-container")}>
+          <Section title={t("@TOOLS")} className={cx("tools-container")}>
             <ul>
               {tools.map((tool) => (
                 <li key={uuidv4()}>
@@ -141,7 +143,7 @@ function InfoBar() {
               href="https://vietcv.io/nguyenhuutrong-cv-vietnamese"
               target="_blank"
             >
-              DOWNLOAD CV
+              {t("@DOWNLOAD_CV")}
               <FontAwesomeIcon
                 icon={faDownload}
                 className={cx("download-icon")}

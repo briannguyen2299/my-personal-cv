@@ -4,8 +4,7 @@ const projects = [
   {
     id: 1,
     name: "To-do App",
-    description:
-      "Làm quen với React thông qua việc sử dụng các Hooks như useState, useRef,...",
+    description: "@TODO_APP_DESCRIPTION",
     image: todoApp,
     tags: [
       { id: 1, title: "React" },
@@ -19,7 +18,7 @@ const projects = [
   {
     id: 2,
     name: "E-commerce Shopping",
-    description: "Xây dựng giao diện website bán hàng cho doanh nghiệp.",
+    description: "@ECOMMERCE_DESCRIPTION",
     image: eCommerce,
     tags: [
       { id: 1, title: "React" },
@@ -33,7 +32,7 @@ const projects = [
   {
     id: 3,
     name: "Restaurant Menu",
-    description: "Website với giao diện làm nổi bật thực đơn của nhà hàng.",
+    description: "@RESTAURANT_MENU_DESCRIPTION",
     image: restaurant,
     tags: [
       { id: 1, title: "React" },

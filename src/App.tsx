@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 
-import { ThemeProvider } from "./context/ThemeContext";
+import { AppProvider } from "./context/AppContext";
 import InfoBar from "./components/InfoBar";
 import MenuBar from "./components/MenuBar";
 import Content from "./components/Content";
@@ -12,12 +12,12 @@ const cx = classNames.bind(styles);
 function App() {
   return (
     <div className={cx("app-container")}>
-      <ThemeProvider>
+      <AppProvider>
         <TopBar />
         <InfoBar />
         <MenuBar />
         <Content />
-      </ThemeProvider>
+      </AppProvider>
     </div>
   );
 }

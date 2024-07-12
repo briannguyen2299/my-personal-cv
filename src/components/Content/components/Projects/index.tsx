@@ -4,6 +4,7 @@ import {
   faArrowUpRightFromSquare,
   faFlask,
 } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 import styles from "./Projects.module.scss";
 import { projects } from "../../../../assets/data";
@@ -12,8 +13,10 @@ import Section from "../Section";
 const cx = classNames.bind(styles);
 
 function Projects() {
+  const { t } = useTranslation("content");
+
   return (
-    <Section title="Dự án cá nhân" icon={faFlask} id="projects">
+    <Section title="@PROJECTS" icon={faFlask} id="projects">
       <div>
         <ul className={cx("project-list")}>
           {projects.map((project) => {
@@ -37,7 +40,7 @@ function Projects() {
                     <div className={cx("content")}>
                       <figcaption className={cx("text")}>
                         <h2>{project.name}</h2>
-                        <p>{project.description}</p>
+                        <p>{t(project.description as never)}</p>
                       </figcaption>
                       <ul className={cx("tags-list")}>
                         {project.tags?.map((tag) => (

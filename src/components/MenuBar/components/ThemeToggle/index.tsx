@@ -1,17 +1,20 @@
-import { useContext, useLayoutEffect, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
-import styles from "./MenuBar.module.scss";
-import { ThemeContext } from "../../context/ThemeContext";
+import { useTranslation } from "react-i18next";
+
+import styles from "./ThemeToggle.module.scss";
+import { ThemeContext } from "../../../../context/AppContext";
 
 const cx = classNames.bind(styles);
 
 function ThemeToggle() {
-  const { theme, setTheme }: any = useContext(ThemeContext);
+  const { theme, setTheme } = useContext(ThemeContext);
   const [effectTitle, ctrlTitle] = useSpring(() => ({}));
   const [effectIcon, ctrlIcon] = useSpring(() => ({}));
+  const { t } = useTranslation("menuBar");
 
   const handleThemeChange = () => {
     if (theme !== "dark") {
@@ -22,14 +25,6 @@ function ThemeToggle() {
   };
 
   useEffect(() => {
-    if (theme !== "dark") {
-      document.body.classList.add("light-theme");
-    } else {
-      document.body.classList.remove("light-theme");
-    }
-  }, [theme]);
-
-  useLayoutEffect(() => {
     ctrlTitle.start({
       from: { opacity: 0 },
       to: { opacity: 1 },
@@ -41,11 +36,12 @@ function ThemeToggle() {
       from: { opacity: 0, scale: 0 },
       to: { opacity: 1, scale: 1 },
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [theme]);
 
   return (
     <div className={cx("mode-toggle")} onClick={handleThemeChange}>
-      <animated.span style={effectTitle}>{theme}</animated.span>
+      <animated.span style={effectTitle}>{t(theme, theme)}</animated.span>
       <animated.div className={cx("toggle-icon")} style={effectIcon}>
         {theme !== "dark" ? (
           <FontAwesomeIcon icon={faSun} />

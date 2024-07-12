@@ -1,60 +1,50 @@
-import React, { useRef, useState, useLayoutEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { animated, useTrail, useSpring, a } from "@react-spring/web";
+import { useTranslation } from "react-i18next";
 
 import classNames from "classnames/bind";
 import styles from "./MenuBar.module.scss";
-import { animated, useTrail, useSpring, a } from "@react-spring/web";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "./components/ThemeToggle";
+import LanguageToggle from "./components/LanguageToggle";
+import menuList from "../../assets/data/menu-list";
 
 const cx = classNames.bind(styles);
-const menuList = [
-  {
-    id: 1,
-    title: "Trang chủ",
-    link: "/",
-  },
-  {
-    id: 2,
-    title: "Dự án",
-    link: "#projects",
-  },
-  {
-    id: 3,
-    title: "Học vấn",
-    link: "#education",
-  },
-  {
-    id: 4,
-    title: "Kinh nghiệm",
-    link: "#experience",
-  },
-  {
-    id: 5,
-    title: "Kỹ năng",
-    link: "#skills",
-  },
-  {
-    id: 6,
-    title: "Liên hệ",
-    link: "#contact",
-  },
-];
 
-const Trail: React.FC<{ open: boolean; children: any }> = ({
-  open,
-  children,
-}) => {
+const Trail: React.FC<{
+  open: boolean;
+  children?: React.ReactNode;
+  animation: string;
+}> = ({ open, children, animation }) => {
   const items = React.Children.toArray(children);
-  const trail = useTrail(items.length, {
+  let trail;
+  const floatLeftAnimation = useTrail(items.length, {
     config: {},
     opacity: open ? 1 : 0,
     x: open ? 0 : 100,
     from: { opacity: 0, x: 100 },
   });
+  const floatDownAnimation = useTrail(items.length, {
+    config: {},
+    opacity: open ? 1 : 0,
+    y: open ? 0 : -50,
+    from: { opacity: 0, y: 0 },
+  });
+  switch (animation) {
+    case "float-left":
+      trail = floatLeftAnimation;
+      break;
+    case "float-down":
+      trail = floatDownAnimation;
+      break;
+    default:
+      console.log(`Sorry, we are out of ${animation}.`);
+  }
+
   return (
     <>
-      {trail.map((style, index) => (
+      {trail?.map((style, index) => (
         <a.li key={index} className={cx("menu-item")} style={style}>
           {items[index]}
         </a.li>
@@ -65,8 +55,9 @@ const Trail: React.FC<{ open: boolean; children: any }> = ({
 
 function MenuBar() {
   const [show, setShow] = useState(false);
-  const refBar = useRef<HTMLDivElement>(null);
+  const refBar = useRef<null | HTMLDivElement>(null);
   const [effectMenuIcon, ctrlMenuIcon] = useSpring(() => ({}));
+  const { t } = useTranslation("menuBar");
 
   const handleShowMenu = () => {
     if (!show) {
@@ -77,7 +68,7 @@ function MenuBar() {
     setShow(!show);
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     ctrlMenuIcon.start({
       from: { opacity: 0, scale: 0, rotate: 0 },
       to: [
@@ -85,6 +76,7 @@ function MenuBar() {
         { opacity: 1, scale: 1, rotate: 360 },
       ],
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 
   return (
@@ -107,13 +99,18 @@ function MenuBar() {
           </header>
           <nav className={cx("content")}>
             <ul className={cx("menu-list")}>
-              <Trail open={show}>
+              <Trail open={show} animation="float-left">
                 {menuList.map((item) => (
                   <a href={item.link} key={item.id}>
-                    {item.title}
+                    {t(item.title, item.title)}
                   </a>
                 ))}
+              </Trail>
+            </ul>
+            <ul className={cx("options")}>
+              <Trail open={show} animation="float-down">
                 <ThemeToggle />
+                <LanguageToggle />
               </Trail>
             </ul>
           </nav>

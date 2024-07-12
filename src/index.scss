@@ -95,6 +95,7 @@ body {
   background-color: var(--background-color-1);
   color: var(--text-color-1);
   text-rendering: optimizeSpeed;
+  user-select: none;
 }
 
 a {

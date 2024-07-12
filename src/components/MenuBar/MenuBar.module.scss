@@ -72,6 +72,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .menu-list {
@@ -83,8 +84,8 @@
 
 .menu-item {
   padding: 8px 30px;
+  cursor: pointer;
   a {
-    white-space: nowrap;
     transition: margin-left var(--transition-2);
 
     &:hover {
@@ -93,25 +94,8 @@
   }
 }
 
-.mode-toggle {
+.options {
   width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  gap: 12px;
-  cursor: pointer;
-
-  &:hover {
-    color: var(--text-color-3);
-    text-shadow: var(--text-shadow-1);
-    transition: var(--transition-1);
-  }
-}
-
-.toggle-icon {
-  font-size: 16px;
-  display: flex;
-  align-items: center;
 }
 
 @media screen and (max-width: 992px) {

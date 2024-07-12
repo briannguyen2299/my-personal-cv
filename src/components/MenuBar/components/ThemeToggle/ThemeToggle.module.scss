@@ -1,0 +1,19 @@
+.mode-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+
+  &:hover {
+    color: var(--text-color-3);
+    text-shadow: var(--text-shadow-1);
+    transition: var(--transition-1);
+  }
+}
+
+.toggle-icon {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
